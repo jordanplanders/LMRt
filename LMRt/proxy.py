@@ -9,10 +9,10 @@ import os
 from collections import OrderedDict
 from tqdm import tqdm
 import random
-
-from pyleoclim.core.ui import (
-    Series,
-)
+from pyleoclim import Series
+# from pyleoclim.core.ui import (
+#     Series,
+# )
 
 from .utils import (
     pp,
@@ -171,7 +171,7 @@ class ProxyRecord(Series):
         if 'color' not in kws and 'c' not in kws:
             kws['color'] = PAGES2k.colors_dict[self.ptype]
 
-        fig, ax = super().plot(mute=True, **kws)
+        fig, ax = super().plot(**kws)
 
         if hasattr(self.psm, 'calib_details') and self.psm.calib_details is not None:
             calibed_season = self.psm.calib_details['seasonality']
